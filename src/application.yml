@@ -1,9 +1,0 @@
-spring:
-  ai:
-    mcp:
-      server:
-        name: mcp-stack-de-mama
-        version: 0.0.1
-        protocol: STREAMABLE
-server:
-  port: ${PORT:8080}
