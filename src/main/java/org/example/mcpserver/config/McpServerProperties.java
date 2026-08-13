@@ -14,10 +14,6 @@ public class McpServerProperties {
 
     @NotNull
     private Http http = new Http();
-
-    @NotNull
-    private Mcp mcp = new Mcp();
-
     @NotNull
     private Security security = new Security();
 
@@ -37,14 +33,6 @@ public class McpServerProperties {
         this.http = http;
     }
 
-    public Mcp getMcp() {
-        return mcp;
-    }
-
-    public void setMcp(Mcp mcp) {
-        this.mcp = mcp;
-    }
-
     public Security getSecurity() {
         return security;
     }
@@ -59,6 +47,9 @@ public class McpServerProperties {
 
         @NotBlank
         private String donacionesBaseUrl;
+
+        @NotBlank
+        private String donadoresEntidadesBaseUrl;
 
         @NotBlank
         private String incentivosBaseUrl;
@@ -86,6 +77,14 @@ public class McpServerProperties {
         public void setIncentivosBaseUrl(String incentivosBaseUrl) {
             this.incentivosBaseUrl = incentivosBaseUrl;
         }
+
+        public String getDonadoresEntidadesBaseUrl() {
+            return donadoresEntidadesBaseUrl;
+        }
+
+        public void setDonadoresEntidadesBaseUrl(String donadoresEntidadesBaseUrl) {
+            this.donadoresEntidadesBaseUrl = donadoresEntidadesBaseUrl;
+        }
     }
 
     public static class Http {
@@ -109,19 +108,6 @@ public class McpServerProperties {
 
         public void setReadTimeout(Duration readTimeout) {
             this.readTimeout = readTimeout;
-        }
-    }
-
-    public static class Mcp {
-        @NotBlank
-        private String endpoint = "/mcp";
-
-        public String getEndpoint() {
-            return endpoint;
-        }
-
-        public void setEndpoint(String endpoint) {
-            this.endpoint = endpoint;
         }
     }
 

@@ -1,15 +1,28 @@
 server:
   port: ${PORT:8080}
 
+spring:
+  ai:
+    mcp:
+      server:
+        name: mcp-stack-de-mama
+        version: 0.1.0
+        protocol: STATELESS   # sin sesión entre llamadas: cada tool call es independiente. Correcto para un bot de Telegram sin estado conversacional persistido en el MCP.
+
 app:
-  mcp:
-    endpoint: ${MCP_ENDPOINT:/mcp}
   security:
     bearer-token: ${MCP_SERVER_BEARER_TOKEN:change-me}
   services:
     logistica-base-url: ${LOGISTICA_BASE_URL:http://localhost:9001}
     donaciones-base-url: ${DONACIONES_BASE_URL:http://localhost:9002}
+    donadores-entidades-base-url: ${DONADORES_ENTIDADES_BASE_URL:http://localhost:9004}
     incentivos-base-url: ${INCENTIVOS_BASE_URL:http://localhost:9003}
   http:
     connect-timeout: ${HTTP_CONNECT_TIMEOUT:10s}
     read-timeout: ${HTTP_READ_TIMEOUT:60s}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

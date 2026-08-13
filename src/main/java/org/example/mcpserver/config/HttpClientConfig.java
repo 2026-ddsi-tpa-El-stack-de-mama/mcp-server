@@ -22,6 +22,12 @@ public class HttpClientConfig {
     }
 
     @Bean
+    @Qualifier("donadoresEntidadesRestClient")
+    RestClient donadoresEntidadesRestClient(McpServerProperties properties) {
+        return createRestClient(properties.getServices().getDonadoresEntidadesBaseUrl(), properties);
+    }
+
+    @Bean
     @Qualifier("incentivosRestClient")
     RestClient incentivosRestClient(McpServerProperties properties) {
         return createRestClient(properties.getServices().getIncentivosBaseUrl(), properties);
@@ -31,10 +37,6 @@ public class HttpClientConfig {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(Math.toIntExact(properties.getHttp().getConnectTimeout().toMillis()));
         requestFactory.setReadTimeout(Math.toIntExact(properties.getHttp().getReadTimeout().toMillis()));
-
-        return RestClient.builder()
-                .baseUrl(baseUrl)
-                .requestFactory(requestFactory)
-                .build();
+        return RestClient.builder().baseUrl(baseUrl).requestFactory(requestFactory).build();
     }
 }

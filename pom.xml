@@ -13,12 +13,13 @@
     <artifactId>mcp-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>mcp-server</name>
-    <description>MCP server skeleton with Spring Boot and MCP Java SDK</description>
+    <description>MCP server skeleton with Spring Boot and Spring AI</description>
 
     <properties>
         <java.version>21</java.version>
-        <mcp.sdk.version>2.0.0</mcp.sdk.version>
+        <spring-ai.version>2.0.0</spring-ai.version>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -30,6 +31,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -41,12 +43,15 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.modelcontextprotocol.sdk</groupId>
-            <artifactId>mcp</artifactId>
-            <version>${mcp.sdk.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,7 +59,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
