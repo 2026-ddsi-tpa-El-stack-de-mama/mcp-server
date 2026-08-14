@@ -18,7 +18,6 @@
     <properties>
         <java.version>21</java.version>
         <spring-ai.version>2.0.0</spring-ai.version>
-        <spring-cloud.version>2025.0.3</spring-cloud.version>
     </properties>
 
     <dependencyManagement>
@@ -27,13 +26,6 @@
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
                 <version>2.0.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -51,20 +43,6 @@
             <version>4.37.0</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.anthropic</groupId>
-            <artifactId>anthropic-java</artifactId>
-            <version>2.54.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20250107</version>
-        </dependency>
-        <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
             <version>6.5.0</version>
@@ -72,6 +50,17 @@
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-starter-mcp-server-webmvc</artifactId>
+        </dependency>
+        <!-- Cliente MCP real: consume las tools del propio server via protocolo (streamable-http, loopback) -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-mcp-client</artifactId>
+        </dependency>
+        <!-- ChatModel de Anthropic para Spring AI: reemplaza la llamada HTTP cruda a /v1/messages
+             que tenia el TelegramBot y habilita el loop de tool-calling automatico via ChatClient -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-anthropic</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

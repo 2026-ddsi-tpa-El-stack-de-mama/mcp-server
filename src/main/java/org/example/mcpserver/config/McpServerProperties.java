@@ -17,6 +17,17 @@ public class McpServerProperties {
     @NotNull
     private Security security = new Security();
 
+    @NotNull
+    private Telegram telegram = new Telegram();
+
+    public Telegram getTelegram() {
+        return telegram;
+    }
+
+    public void setTelegram(Telegram telegram) {
+        this.telegram = telegram;
+    }
+
     public Services getServices() {
         return services;
     }
@@ -121,6 +132,30 @@ public class McpServerProperties {
 
         public void setBearerToken(String bearerToken) {
             this.bearerToken = bearerToken;
+        }
+    }
+
+    public static class Telegram {
+        @NotBlank
+        private String botToken;
+
+        @NotBlank
+        private String botUsername;
+
+        public String getBotToken() {
+            return botToken;
+        }
+
+        public void setBotToken(String botToken) {
+            this.botToken = botToken;
+        }
+
+        public String getBotUsername() {
+            return botUsername;
+        }
+
+        public void setBotUsername(String botUsername) {
+            this.botUsername = botUsername;
         }
     }
 }
